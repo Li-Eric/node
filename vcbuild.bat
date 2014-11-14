@@ -13,6 +13,7 @@ if /i "%1"=="/?" goto help
 
 @rem Process arguments.
 set config=Release
+set platform=Win32
 set msiplatform=x86
 set target=Build
 set target_arch=ia32
@@ -76,6 +77,7 @@ if defined jslint goto jslint
 
 if "%config%"=="Debug" set debug_arg=--debug
 if "%target_arch%"=="x64" set msiplatform=x64
+if "%target_arch%"=="x64" set platform=x64
 if defined nosnapshot set nosnapshot_arg=--without-snapshot
 if defined noetw set noetw_arg=--without-etw& set noetw_msi_arg=/p:NoETW=1
 if defined noperfctr set noperfctr_arg=--without-perfctr& set noperfctr_msi_arg=/p:NoPerfCtr=1
@@ -138,7 +140,7 @@ goto run
 
 :msbuild-found
 @rem Build the sln with msbuild.
-msbuild node.sln /m:%NUMBER_OF_PROCESSORS% /p:BuildInParallel=true /toolsversion:14.0 /p:PlatformToolset=v140 /t:%target% /p:Configuration=%config% /clp:NoSummary;NoItemAndPropertyList;Verbosity=minimal /nologo
+msbuild node.sln /m:%NUMBER_OF_PROCESSORS% /p:BuildInParallel=true /toolsversion:14.0 /p:PlatformToolset=v140 /t:%target% /p:Configuration=%config% /p:Platform=%platform% /clp:NoSummary;NoItemAndPropertyList;Verbosity=minimal /nologo
 if errorlevel 1 goto exit
 
 :sign
@@ -205,7 +207,7 @@ if "%test%"=="test" goto jslint
 goto exit
 
 :create-msvs-files-failed
-echo Failed to create vc project files. 
+echo Failed to create vc project files.
 goto exit
 
 :upload
