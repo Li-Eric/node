@@ -204,6 +204,10 @@
       ['OS=="mac"', {
         'defines': ['_DARWIN_USE_64_BIT_INODE=1'],
         'xcode_settings': {
+          'CLANG_CXX_LIBRARY': 'libc++',
+          'CLANG_CXX_LANGUAGE_STANDARD':'c++11',
+          'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0',
+          'GCC_OPTIMIZATION_LEVEL': '3',
           'ALWAYS_SEARCH_USER_PATHS': 'NO',
           'GCC_CW_ASM_SYNTAX': 'NO',                # No -fasm-blocks
           'GCC_DYNAMIC_NO_PIC': 'NO',               # No -mdynamic-no-pic
@@ -213,7 +217,7 @@
           'GCC_ENABLE_PASCAL_STRINGS': 'NO',        # No -mpascal-strings
           'GCC_THREADSAFE_STATICS': 'NO',           # -fno-threadsafe-statics
           'PREBINDING': 'NO',                       # No -Wl,-prebind
-          'MACOSX_DEPLOYMENT_TARGET': '10.8',       # -mmacosx-version-min=10.8
+          'MACOSX_DEPLOYMENT_TARGET': '10.9',       # -mmacosx-version-min=10.9
           'USE_HEADERMAP': 'NO',
           'OTHER_CFLAGS': [
             '-fno-strict-aliasing',
