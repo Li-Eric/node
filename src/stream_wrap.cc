@@ -143,7 +143,6 @@ void StreamWrap::UpdateWriteQueueSize() {
                Integer::New(stream_->write_queue_size));
 }
 
-
 Handle<Value> StreamWrap::ReadStart(const Arguments& args) {
   HandleScope scope;
 
@@ -447,6 +446,13 @@ Handle<Value> StreamWrap::WriteUcs2String(const Arguments& args) {
   return WriteStringImpl<UCS2>(args);
 }
 
+void StreamWrap::SetBlocking(const Arguments& args) {
+  HandleScope scope;
+  StreamWrap* wrap = Unwrap<StreamWrap>(args.This());
+  assert(args.Length() > 0);
+  int err = uv_stream_set_blocking(wrap->stream(), args[0]->IsTrue());
+  scope.Close(Integer::New(err));
+}
 
 void StreamWrap::AfterWrite(uv_write_t* req, int status) {
   WriteWrap* req_wrap = (WriteWrap*) req->data;

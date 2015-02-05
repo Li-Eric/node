@@ -34,6 +34,7 @@ class StreamWrap : public HandleWrap {
   uv_stream_t* GetStream() { return stream_; }
 
   static void Initialize(v8::Handle<v8::Object> target);
+  static void SetBlocking(const v8::Arguments& args);
 
   static v8::Handle<v8::Value> GetFD(v8::Local<v8::String>,
                                      const v8::AccessorInfo&);

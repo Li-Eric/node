@@ -103,7 +103,10 @@ function child2() {
 // using a net socket
 function child3() {
   var net = require('net');
-  var socket = new net.Socket({ fd: 2 });
+  var socket = new net.Socket({
+    fd: 2,
+    readable: false,
+    writable: true});
   socket.write('child 3\n');
   socket.write('foo\n');
   socket.write('bar\n');
