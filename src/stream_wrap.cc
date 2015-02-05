@@ -446,12 +446,15 @@ Handle<Value> StreamWrap::WriteUcs2String(const Arguments& args) {
   return WriteStringImpl<UCS2>(args);
 }
 
-void StreamWrap::SetBlocking(const Arguments& args) {
+Handle<Value> StreamWrap::SetBlocking(const Arguments& args) {
   HandleScope scope;
-  StreamWrap* wrap = Unwrap<StreamWrap>(args.This());
   assert(args.Length() > 0);
-  int err = uv_stream_set_blocking(wrap->stream(), args[0]->IsTrue());
-  scope.Close(Integer::New(err));
+  UNWRAP_NO_ABORT(StreamWrap)
+  if (wrap == NULL && wrap->stream_ == NULL) {
+    return ThrowTypeError("invalid stream");
+  }
+  int err = uv_stream_set_blocking(wrap->stream_, args[0]->IsTrue());
+  return scope.Close(Integer::New(err));
 }
 
 void StreamWrap::AfterWrite(uv_write_t* req, int status) {
