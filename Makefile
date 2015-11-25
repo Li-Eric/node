@@ -370,7 +370,7 @@ $(TARBALL): release-only $(NODE_EXE) doc
 ifeq ($(XZ), 0)
 	xz -c -f -$(XZ_COMPRESSION) $(TARNAME).tar > $(TARNAME).tar.xz
 endif
-	rm -f $(TARNAME).tar
+	rm $(TARNAME).tar
 
 tar: $(TARBALL)
 
