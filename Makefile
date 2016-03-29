@@ -39,7 +39,7 @@ NODE_G_EXE = node_g$(EXEEXT)
 
 # Flags for packaging.
 BUILD_DOWNLOAD_FLAGS ?= --download=all
-BUILD_INTL_FLAGS ?= --with-intl=small-icu
+BUILD_INTL_FLAGS ?= --with-intl=none
 BUILD_RELEASE_FLAGS ?= $(BUILD_DOWNLOAD_FLAGS) $(BUILD_INTL_FLAGS)
 
 # Default to verbose builds.
