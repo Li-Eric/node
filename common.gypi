@@ -128,7 +128,7 @@
             'EnableFunctionLevelLinking': 'true',
             'EnableIntrinsicFunctions': 'true',
             'RuntimeTypeInfo': 'false',
-            'RuntimeLibrary': 2 # MultiThreadedDLL (/MD)
+            'RuntimeLibrary': 2, # MultiThreadedDLL (/MD)
             'AdditionalOptions': [
               '/MP', # compile across multiple CPUs
             ],
