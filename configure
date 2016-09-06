@@ -1303,7 +1303,7 @@ if options.use_xcode:
 elif options.use_ninja:
   gyp_args += ['-f', 'ninja']
 elif flavor == 'win' and sys.platform != 'msys':
-  gyp_args += ['-f', 'msvs', '-G', 'msvs_version=auto']
+  gyp_args += ['-f', 'msvs', '-G', 'msvs_version=2015']
 else:
   gyp_args += ['-f', 'make-' + flavor]
 

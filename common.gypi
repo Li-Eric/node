@@ -80,20 +80,6 @@
             'cflags': [ '-fPIE' ],
             'ldflags': [ '-fPIE', '-pie' ]
           }],
-          ['node_shared=="true"', {
-            'msvs_settings': {
-             'VCCLCompilerTool': {
-               'RuntimeLibrary': 3, # MultiThreadedDebugDLL (/MDd)
-             }
-            }
-          }],
-          ['node_shared=="false"', {
-            'msvs_settings': {
-              'VCCLCompilerTool': {
-                'RuntimeLibrary': 1 # MultiThreadedDebug (/MTd)
-              }
-            }
-          }]
         ],
         'msvs_settings': {
           'VCCLCompilerTool': {
@@ -101,6 +87,7 @@
             'MinimalRebuild': 'false',
             'OmitFramePointers': 'false',
             'BasicRuntimeChecks': 3, # /RTC1
+            'RuntimeLibrary': 3, # MultiThreadedDebugDLL (/MDd)
           },
           'VCLinkerTool': {
             'LinkIncremental': 2, # enable incremental linking
@@ -130,20 +117,6 @@
             'cflags': [ '-fPIE' ],
             'ldflags': [ '-fPIE', '-pie' ]
           }],
-          ['node_shared=="true"', {
-            'msvs_settings': {
-             'VCCLCompilerTool': {
-               'RuntimeLibrary': 2 # MultiThreadedDLL (/MD)
-             }
-            }
-          }],
-          ['node_shared=="false"', {
-            'msvs_settings': {
-              'VCCLCompilerTool': {
-                'RuntimeLibrary': 0 # MultiThreaded (/MT)
-              }
-            }
-          }]
         ],
         'msvs_settings': {
           'VCCLCompilerTool': {
@@ -155,6 +128,7 @@
             'EnableFunctionLevelLinking': 'true',
             'EnableIntrinsicFunctions': 'true',
             'RuntimeTypeInfo': 'false',
+            'RuntimeLibrary': 2 # MultiThreadedDLL (/MD)
             'AdditionalOptions': [
               '/MP', # compile across multiple CPUs
             ],

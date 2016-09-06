@@ -1104,13 +1104,7 @@
         'msvs_settings': {
           'VCCLCompilerTool': {
             'Optimization': '0',
-            'conditions': [
-              ['component=="shared_library" or force_dynamic_crt==1', {
-                'RuntimeLibrary': '3',  # /MDd
-              }, {
-                'RuntimeLibrary': '1',  # /MTd
-              }],
-            ],
+            'RuntimeLibrary': '3',  # /MDd
           },
           'VCLinkerTool': {
             'LinkIncremental': '2',
@@ -1156,13 +1150,7 @@
             'FavorSizeOrSpeed': '0',
             'StringPooling': 'true',
             'BasicRuntimeChecks': '0',
-            'conditions': [
-              ['component=="shared_library" or force_dynamic_crt==1', {
-                'RuntimeLibrary': '3',  #/MDd
-              }, {
-                'RuntimeLibrary': '1',  #/MTd
-              }],
-            ],
+            'RuntimeLibrary': '3'
           },
           'VCLinkerTool': {
             'LinkIncremental': '1',
@@ -1347,13 +1335,7 @@
                 'EnableIntrinsicFunctions': 'true',
                 'FavorSizeOrSpeed': '0',
                 'StringPooling': 'true',
-                'conditions': [
-                  ['component=="shared_library" or force_dynamic_crt==1', {
-                    'RuntimeLibrary': '2',  #/MD
-                  }, {
-                    'RuntimeLibrary': '0',  #/MT
-                  }],
-                ],
+                'RuntimeLibrary': '2',  #/MD
               },
               'VCLinkerTool': {
                 'LinkIncremental': '1',
